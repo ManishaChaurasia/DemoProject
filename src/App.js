@@ -6,12 +6,17 @@ import NavbarComponent from "./components/navComponent/NavbarComponent";
 
 import BannerComponent from "./components/bannerComponent/BannerComponent";
 import PopupComponent from "./components/popupComponent/PopupComponent";
+import { Switch } from 'react-router-dom';
+
+import AppRouter from "./AppRouter";
+
 function App() {
   return (
     <div className="App">
       <>
-        <NavbarComponent />
-        <BannerComponent />
+        {/* <NavbarComponent />
+        <BannerComponent /> */}
+        <AppRouter />
       </>
     </div>
   );

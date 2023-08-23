@@ -1,0 +1,18 @@
+
+.BannerContent p {
+   @media(max-width:991px){
+    display: none;
+   }
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 4rem;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .BannerContent {
+    position: relative;
+  }

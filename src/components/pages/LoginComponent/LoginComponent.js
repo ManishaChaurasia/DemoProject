@@ -5,6 +5,7 @@ import {
     Routes,
     Route,
     Link,
+    useNavigate,
     useSearchParams
   } from "react-router-dom";
 const LoginComponent = () => {
@@ -12,15 +13,18 @@ const LoginComponent = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [password , setPassword]= useState("");
     const [errorPasswordMessage , setErrorPasswordMessage] = useState('');
-    const [allEntry , setAllEntry]= useState([]);
-    const submitForm = (e)=>{
-        e.preventDefault()
-        const newEntry = {email:email, password:password};
-        setAllEntry(...allEntry, [newEntry]);
-        console.log(newEntry);
-     }
+    // const [allEntry , setAllEntry]= useState([]);
+    const navigate = useNavigate();
+    const [emptyError , setEmptyError] = useState("");
+    // const submitForm = (e)=>{
+    //     e.preventDefault()
+    //     const newEntry = {email:email, password:password};
+    //     setAllEntry(...allEntry, [newEntry]);
+    //     console.log(newEntry);
+    //  }
 
 const handleEmailChange = (event) =>{
+    setEmptyError('')
     setEmail(event.target.value);
     if(!validateEmail(email)){
         
@@ -41,6 +45,7 @@ const validateEmail = (email) =>{
 //password
 const handlePasswordChange = (event)=>{
     console.log(password)
+    setEmptyError('')
    if (event.target.value != '12345'){
        setErrorPasswordMessage('Password must be "12345" ');
    }
@@ -53,11 +58,37 @@ const validatePassword = (password)=>{
     return password === '12345';
 
 };
+//local storage 
+const submitDetails = (e) => {
+    e.preventDefault();
+if(email == "" && password == ""){
+    setEmptyError('Please Filled Both details')
+}
+else if (email != "" && password == "") {
+    setErrorPasswordMessage('Please Filled the password');
+    
+} else if(email == "" && password != ""){
+    setErrorMessage('Please fill the email');
+    
+}
+else{
+    if(validateEmail(email) && validatePassword(password)){
+            const userDetails = {email, password};
+            localStorage.setItem('userDetails' , JSON.stringify(userDetails));
+            navigate('/thankyou')
+        }
+}
 
+
+};
 
   return (
     <>
-      <form className="py-5" action="" onSubmit={submitForm}>
+    
+      <form className="py-5" action="" onSubmit={submitDetails}>
+       
+       
+      <p className="text-danger">{emptyError}</p>
         <div className="py-2">
           <label  className="form-label" htmlFor="email"> Email:</label>
           <input id="email" type="text" name="email" autoComplete="off" value={email} onChange={handleEmailChange} />
@@ -70,11 +101,11 @@ const validatePassword = (password)=>{
           {errorPasswordMessage && <p className="error-password text-danger">{errorPasswordMessage}</p>}
         </div>
 
-       <Link to="/thankyou">
+       
        <button className="btn btn-primary btn-lg mt-3" type="submit">
           Login
         </button>
-       </Link>
+     
        
       </form>
     </>

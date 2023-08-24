@@ -15,6 +15,7 @@ import GalleryComponent from './components/pages/GalleryComponent/GalleryCompone
 import LoginComponent from './components/pages/LoginComponent/LoginComponent';
 import ThankyouComponent from './components/thankyouComponent/ThankyouComponent';
 
+
 const AppRouter = () => {
   return (
     <Router>

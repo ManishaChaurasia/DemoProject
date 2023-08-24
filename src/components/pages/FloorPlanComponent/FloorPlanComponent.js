@@ -3,8 +3,6 @@ import CardComponent from '../../CardComponent/CardComponent';
 import banner from '../../../assets/images/banner.png';
 import cardlogo from '../../../assets/images/crosswalk-logo.png';
 
-
-
 const FloorPlanComponent = () => {
   return (
     <div className='container py-5'>

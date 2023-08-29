@@ -11,9 +11,12 @@ import SportComponent from './components/pages/SportComponent/SportComponent';
 import logo from './assets/images/logo.png';
 import FloorPlanComponent from './components/pages/FloorPlanComponent/FloorPlanComponent';
 import CommunityComponent from './components/pages/CommunityComponent/CommunityComponent';
+import PaymentComponent from './components/pages/PaymentComponent/PaymentComponent';
 import GalleryComponent from './components/pages/GalleryComponent/GalleryComponent';
+import ProductComponent from './components/pages/ProductComponent/ProductComponent';
 import LoginComponent from './components/pages/LoginComponent/LoginComponent';
 import ThankyouComponent from './components/thankyouComponent/ThankyouComponent';
+
 
 
 const AppRouter = () => {
@@ -45,8 +48,14 @@ const AppRouter = () => {
         <Link className='text-decoration-none text-uppercase px-3' to="/gallery">Gallery </Link>
         </li>
         <li class="nav-item">
+        <Link className='text-decoration-none text-uppercase px-3' to="/product">Product </Link>
+        </li>
+        <li class="nav-item">
         <Link className='text-decoration-none text-uppercase px-3' to="/login"> <button className='btn btn-primary'>
             LogIn
+        </button> </Link>
+        <Link className='text-decoration-none text-uppercase px-3' to="/payment"> <button className='btn btn-primary'>
+           Payment
         </button> </Link>
         </li>
      
@@ -64,6 +73,8 @@ const AppRouter = () => {
                     <Route path="/gallery" element={<GalleryComponent/>} />
                     <Route path="/login" element={<LoginComponent/>} />
                     <Route path="/thankyou" element={<ThankyouComponent/>} />
+                    <Route path="/payment" element={<PaymentComponent/>} />
+                    <Route path="/product" element={<ProductComponent/>} />
         </Routes>
     </Router>
   );
